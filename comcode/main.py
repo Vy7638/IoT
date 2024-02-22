@@ -3,6 +3,7 @@ from Adafruit_IO import MQTTClient
 import time
 import random
 from simple_ai import image_detector
+from uart import *
 
 AIO_FEED_ID = ["led", "temperature", "light", "humidity", "status-ai"]
 AIO_USERNAME = "Vy2908"
@@ -36,23 +37,31 @@ res_ai = ""
 
 while True:
     counter = counter - 1
+
+    # if counter <= 0:
+    #     counter = 10
+    #     temp = random.randint(20, 50)
+    #     client.publish("temperature", temp)
+    #     light = random.randint(0, 5000)
+    #     client.publish("light", light)
+    #     humi = random.randint(0, 100)
+    #     client.publish("humidity", humi)
+    #     led1 = random.randint(0,1)
+    #     if led1 != led :
+    #         led = led1;
+    #         client.publish("led", led)
+    
     if counter <= 0 :  
         counter = 10
-        # temp = random.randint(20, 50)
-        # client.publish("temperature", temp)
-        # light = random.randint(0, 5000)
-        # client.publish("light", light)
-        # humi = random.randint(0, 100)
-        # client.publish("humidity", humi)
-        # led1 = random.randint(0,1)
-        # if led1 != led :
-        #     led = led1;
-        #     client.publish("led", led)
+        #---simple ai image detector-----
         res_ai_prev = res_ai
         res_ai = image_detector()
         print("Output AI: ", res_ai)
         if res_ai_prev != res_ai:
             client.publish("status-ai", res_ai)
+
+    #-----read data-------
+    readSerial(client)
 
     time.sleep(1)        
 

@@ -13,7 +13,7 @@ model = load_model("keras_model.h5", compile=False)
 class_names = ["Không đeo khẩu trang", "Không có người", "Có người đeo khẩu trang"]
 
 # CAMERA can be 0 or 1 based on default camera of your computer
-camera = cv2.VideoCapture("http://192.168.196.164:4747/video")
+camera = cv2.VideoCapture(0)
 
 def image_detector():
     # Grab the webcamera's image.
@@ -23,7 +23,7 @@ def image_detector():
     image = cv2.resize(image, (224, 224), interpolation=cv2.INTER_AREA)
 
     # Show the image in a window
-    cv2.imshow("Webcam Image", image)
+    # cv2.imshow("Webcam Image", image)
 
     # Make the image a numpy array and reshape it to the models input shape.
     image = np.asarray(image, dtype=np.float32).reshape(1, 224, 224, 3)
