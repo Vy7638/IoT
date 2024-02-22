@@ -6,7 +6,7 @@ from simple_ai import image_detector
 
 AIO_FEED_ID = ["led", "temperature", "light", "humidity", "status-ai"]
 AIO_USERNAME = "Vy2908"
-AIO_KEY = "aio_jLZA29mrbdAjM8Y76PyRjvIGWz4d"
+AIO_KEY = ""
 
 def connected(client):
     print("Ket noi thanh cong ...")
