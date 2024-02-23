@@ -31,8 +31,8 @@ client.on_message = message
 client.on_subscribe = subscribe
 client.connect()
 client.loop_background()
-counter = 10
-led = 0;
+counter = 0
+led = 0
 res_ai = ""
 
 while True:
