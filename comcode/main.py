@@ -2,12 +2,12 @@ import sys
 from Adafruit_IO import MQTTClient
 import time
 import random
-# from simple_ai import image_detector
+from simple_ai import *
 from uart import *
 
 AIO_FEED_ID = ["led", "machine", "temperature", "light", "humidity", "status-ai"]
 AIO_USERNAME = "Vy2908"
-AIO_KEY = "aio_hPMF75Jf5Hg5AAB485jSgMegaowp"
+AIO_KEY = ""
 
 def connected(client):
     print("Ket noi thanh cong ...")
@@ -49,19 +49,6 @@ res_ai = ""
 
 while True:
     counter = counter - 1
-
-    # if counter <= 0:
-    #     counter = 10
-    #     temp = random.randint(20, 50)
-    #     client.publish("temperature", temp)
-    #     light = random.randint(0, 5000)
-    #     client.publish("light", light)
-    #     humi = random.randint(0, 100)
-    #     client.publish("humidity", humi)
-    #     led1 = random.randint(0,1)
-    #     if led1 != led :
-    #         led = led1;
-    #         client.publish("led", led)
     
     if counter <= 0 :  
         counter = 10
@@ -76,5 +63,3 @@ while True:
     readSerial(client)
 
     time.sleep(1)        
-
-    
