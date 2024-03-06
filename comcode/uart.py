@@ -1,9 +1,9 @@
 import serial.tools.list_ports
+from Adafruit_IO import MQTTClient
 
 def getPort():
     ports = serial.tools.list_ports.comports()
     N = len(ports)
-    commPort = "None"
     for i in range(0, N):
         port = ports[i]
         strPort = str(port)
@@ -13,11 +13,12 @@ def getPort():
     return "COM3"
 
 
-if getPort != "None":
-    ser = serial.Serial( port=getPort(), baudrate=115200)
+if getPort() != "None":
+    ser = serial.Serial(port=getPort(), baudrate=115200)
     print(ser)
 
 def processData(client, data):
+    print(data)
     data = data.replace("!", "")
     data = data.replace("#", "")
     splitData = data.split(":")
@@ -44,3 +45,6 @@ def readSerial(client):
                 mess = ""
             else:
                 mess = mess[end+1:]
+
+def writeData(data):
+    ser.write(str(data).encode('utf-8'))

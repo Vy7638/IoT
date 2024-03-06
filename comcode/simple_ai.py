@@ -13,6 +13,7 @@ model = load_model("keras_model.h5", compile=False)
 class_names = ["Không đeo khẩu trang", "Không có người", "Có người đeo khẩu trang"]
 
 # CAMERA can be 0 or 1 based on default camera of your computer
+#camera = cv2.VideoCapture("http://172.17.38.217:4747/video")
 camera = cv2.VideoCapture(0)
 
 def image_detector():
