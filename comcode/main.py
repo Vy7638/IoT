@@ -42,14 +42,9 @@ client.on_message = message
 client.on_subscribe = subscribe
 client.connect()
 client.loop_background()
-<<<<<<< HEAD
 
 counter = 0
 # led = 0
-=======
-counter = 0
-led = 0
->>>>>>> ce099bf724628f0a2651058b62a2ee843b099984
 res_ai = ""
 
 while True:
@@ -68,17 +63,17 @@ while True:
     #         led = led1;
     #         client.publish("led", led)
     
-    # if counter <= 0 :  
-    #     counter = 10
-    #     #---simple ai image detector-----
-    #     res_ai_prev = res_ai
-    #     res_ai = image_detector()
-    #     print("Output AI: ", res_ai)
-    #     if res_ai_prev != res_ai:
-    #         client.publish("status-ai", res_ai)
+    if counter <= 0 :  
+        counter = 10
+        #---simple ai image detector-----
+        res_ai_prev = res_ai
+        res_ai = image_detector()
+        print("Output AI: ", res_ai)
+        if res_ai_prev != res_ai:
+            client.publish("status-ai", res_ai)
 
-    #-----read data-------
-    # readSerial(client)
+    # -----read data-------
+    readSerial(client)
 
     time.sleep(1)        
 
