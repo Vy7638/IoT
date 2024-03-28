@@ -1,13 +1,12 @@
 import sys
 from Adafruit_IO import MQTTClient
 import time
-import random
 from simple_ai import *
 from uart import *
 
 AIO_FEED_ID = ["led", "machine", "temperature", "light", "humidity", "status-ai"]
 AIO_USERNAME = "Vy2908"
-AIO_KEY = ""
+AIO_KEY = "aio_OaBX66s3Nosy50fiFkzZDommByUz"
 
 def connected(client):
     print("Ket noi thanh cong ...")
